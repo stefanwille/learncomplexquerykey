@@ -18,13 +18,14 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
+        <button
          onClick={() => {
            setCounter(counter + 1);
          }}
         >
-          Count!
-        </a>
+          Render!
+        </button>
+        <br/>
         Counter: {counter}
       </header>
     </div>
