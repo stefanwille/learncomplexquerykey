@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 
 export function CachedDataWhileLoading() {
   const [index, setIndex] = useState(0);
+  const [successCounter, setSuccessCounter] = useState(0);
   const incrementIndex = () => {
     setIndex(index + 1);
   };
@@ -19,6 +20,11 @@ export function CachedDataWhileLoading() {
           resolve("some-result " + index);
         }, 3000);
       });
+    },
+    {
+      onSuccess: () => {
+        setSuccessCounter(successCounter + 1);
+      },
     }
   );
 
@@ -32,6 +38,8 @@ export function CachedDataWhileLoading() {
       Counter: {index}
       <br />
       Result: {queryResult.data} {queryResult.status}
+      <br />
+      onSuccess callbacks: {successCounter}
     </div>
   );
 }
