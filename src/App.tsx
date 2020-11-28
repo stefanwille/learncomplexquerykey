@@ -1,23 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from 'react';
 import './App.css';
+import { useQuery } from 'react-query'
 
 function App() {
+  const [counter, setCounter] = useState(0)
+  const a = [1,2,3];
+  const o = { area: 'portfolio'}
+  useQuery(['hello', 'world', a, o], async (...queryKeys: any[]) => {
+    console.log("useQuery", queryKeys)
+    return "some-result"
+  })
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+         onClick={() => {
+           setCounter(counter + 1);
+         }}
         >
-          Learn React
+          Count!
         </a>
+        Counter: {counter}
       </header>
     </div>
   );
