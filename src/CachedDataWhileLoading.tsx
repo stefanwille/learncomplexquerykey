@@ -37,7 +37,9 @@ export function CachedDataWhileLoading() {
       <br />
       Counter: {index}
       <br />
-      Result: {queryResult.data} {queryResult.status}
+      Result: {queryResult.data}
+      <br />
+      State: {queryResult.status}
       <br />
       onSuccess callbacks: {successCounter}
     </div>

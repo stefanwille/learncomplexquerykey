@@ -8,17 +8,11 @@ import { ComplexQueryKey } from "./ComplexQueryKey";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <ComplexQueryKey />
-        <div style={{ width: "70vw" }}>
-          <hr />
-        </div>
-        <CachedDataWhileLoading />
-        <div style={{ width: "70vw" }}>
-          <hr />
-        </div>
-        <PaginatedQuery />
-      </header>
+      <ComplexQueryKey />
+      <hr />
+      <CachedDataWhileLoading />
+      <hr />
+      <PaginatedQuery />
     </div>
   );
 }

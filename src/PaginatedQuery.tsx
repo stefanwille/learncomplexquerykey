@@ -31,7 +31,9 @@ export function PaginatedQuery() {
       <br />
       Counter: {index}
       <br />
-      Result: {queryResult.data} {queryResult.status}
+      Result: {queryResult.data}
+      <br />
+      State: {queryResult.status}
     </div>
   );
 }
