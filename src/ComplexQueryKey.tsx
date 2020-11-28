@@ -7,8 +7,8 @@ export function ComplexQueryKey() {
   const a = [1, 2, 3];
   const o = { area: "portfolio" };
   const queryKey = ["hello", "world", a, o];
-  useQuery<string, Error>(queryKey, async (...queryKey: any[]) => {
-    console.log("useQuery", queryKey);
+  useQuery<string, Error>(queryKey, async (name, index) => {
+    console.log("useQuery", name, index);
     return "some-result";
   });
 
