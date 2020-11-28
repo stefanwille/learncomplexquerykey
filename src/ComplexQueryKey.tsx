@@ -3,28 +3,37 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 export function ComplexQueryKey() {
-  const [counter, setCounter] = useState(0);
-  const a = [1, 2, 3];
-  const o = { area: "portfolio" };
-  const queryKey = ["hello", "world", a, o];
-  useQuery<string, Error>(queryKey, async (name, index) => {
-    console.log("useQuery", name, index);
-    return "some-result";
-  });
+  const [clickCount, setClickCount] = useState(0);
+  const [queryCount, setQueryCount] = useState(0);
+  const anArray = [1, 2, 3];
+  const anObject = { area: "portfolio" };
+  const queryKey = ["complex-query-key", anArray, anObject];
+  useQuery<string, Error>(
+    queryKey,
+    async (name, index) => {
+      setQueryCount(queryCount + 1);
+      console.log("useQuery", name, index);
+      return "some-result";
+    },
+    { refetchOnWindowFocus: false }
+  );
 
   return (
     <div>
       <p>ComplexQueryKey</p>
       <button
         onClick={() => {
-          setCounter(counter + 1);
+          setClickCount(clickCount + 1);
         }}
       >
         Render!
       </button>
       <br />
       <br />
-      Counter: {counter}
+      Click Count: {clickCount}
+      <br />
+      Query Count: {queryCount}
+      <br />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import "./App.css";
 import { PaginatedQuery } from "./PaginatedQuery";
 import { CachedDataWhileLoading } from "./CachedDataWhileLoading";
 import { ComplexQueryKey } from "./ComplexQueryKey";
+import { PrefetchQuery } from "./PrefetchQuery";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <CachedDataWhileLoading />
       <hr />
       <PaginatedQuery />
+      <hr />
+      <PrefetchQuery />
     </div>
   );
 }

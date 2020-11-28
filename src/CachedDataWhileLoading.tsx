@@ -3,6 +3,20 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 export function CachedDataWhileLoading() {
+  const [componentKey, setComponentKey] = useState(0);
+  const remountComponent = () => {
+    setComponentKey(componentKey + 1);
+  };
+
+  return (
+    <InnerCachedDataWhileLoading
+      key={componentKey}
+      onClick={remountComponent}
+    />
+  );
+}
+
+export function InnerCachedDataWhileLoading(props: { onClick: () => void }) {
   const [index, setIndex] = useState(0);
   const [successCounter, setSuccessCounter] = useState(0);
   const incrementIndex = () => {
@@ -31,6 +45,9 @@ export function CachedDataWhileLoading() {
   return (
     <div>
       <p>CachedDataWhileLoading</p>
+      <button onClick={props.onClick}>Remount</button>
+      <br />
+      <br />
       <button onClick={incrementIndex}>Inc!</button>{" "}
       <button onClick={decrementIndex}>Dec!</button>
       <br />
@@ -40,6 +57,8 @@ export function CachedDataWhileLoading() {
       Result: {queryResult.data}
       <br />
       State: {queryResult.status}
+      <br />
+      isLoading: {queryResult.isLoading ? "loading" : "-"}
       <br />
       onSuccess callbacks: {successCounter}
     </div>
